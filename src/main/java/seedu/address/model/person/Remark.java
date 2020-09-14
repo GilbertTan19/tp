@@ -7,6 +7,7 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable; is always valid
  */
 public class Remark {
+    public static final String MESSAGE_CONSTRAINTS = "Addresses can take any values, and it should not be blank";
     public final String value;
 
     public Remark(String remark) {
