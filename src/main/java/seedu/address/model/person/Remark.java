@@ -10,6 +10,10 @@ public class Remark {
     public static final String MESSAGE_CONSTRAINTS = "Addresses can take any values, and it should not be blank";
     public final String value;
 
+    /**
+     * Constructor for remark.
+     * @param remark
+     */
     public Remark(String remark) {
         requireNonNull(remark);
         value = remark;
