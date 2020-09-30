@@ -121,7 +121,7 @@ public class EditCommand extends Command {
                 } catch (NumberFormatException e) {
                     MultipleChoiceQuestion temp = (MultipleChoiceQuestion) updatedQuestion;
                     ans = temp.getAnswerIndex(updatedAnswer.getAnswer());
-                    if (ans == 0) {
+                    if (ans == -1) {
                         throw new CommandException("Answer must be integer");
                     }
                 }
