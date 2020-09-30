@@ -43,6 +43,15 @@ public class MultipleChoiceQuestion implements Question {
         return sb.toString();
     }
 
+    public int getAnswerIndex(String answer) {
+        for (int i = 0; i < options.length; i++) {
+            if (answer.equals(options[i])) {
+                return i + 1;
+            }
+        }
+        return 0;
+    }
+
     public String[] getChoices() {
         return this.options;
     }

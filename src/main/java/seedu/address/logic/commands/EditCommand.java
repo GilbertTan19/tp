@@ -119,7 +119,11 @@ public class EditCommand extends Command {
                         throw new CommandException("Answer must be smaller than number of choices");
                     }
                 } catch (NumberFormatException e) {
-                    throw new CommandException("Answer must be integer");
+                    MultipleChoiceQuestion temp = (MultipleChoiceQuestion) updatedQuestion;
+                    ans = temp.getAnswerIndex(updatedAnswer.getAnswer());
+                    if (ans == 0) {
+                        throw new CommandException("Answer must be integer");
+                    }
                 }
                 updatedAnswer = new Answer(choices[ans - 1]);
             } else {
@@ -131,7 +135,11 @@ public class EditCommand extends Command {
                         throw new CommandException("Number of choices must be larger than answer");
                     }
                 } catch (NumberFormatException e) {
-                    throw new CommandException("Answer must be integer");
+                    MultipleChoiceQuestion temp = new MultipleChoiceQuestion(question, choices);
+                    ans = temp.getAnswerIndex(updatedAnswer.getAnswer());
+                    if (ans == 0) {
+                        throw new CommandException("Answer must be integer");
+                    }
                 }
                 updatedAnswer = new Answer(updatedChoices[ans - 1]);
             }
