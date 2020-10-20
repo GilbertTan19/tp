@@ -209,6 +209,8 @@ _{more aspects and alternatives to be added}_
 
 ### \[Proposed\] Tags
 
+#### Proposed Implementation
+
 The proposed tags mechanism is facilitated by `Flashcard` upon creation. It is stored internally as an `Set<Tag>` inside the `flashcard` object.
 
 Given below is an example usage scenario and how the tag mechanism behaves at each step.
@@ -235,11 +237,74 @@ Step 3. The user executes `edit 1 t/tag` to edit the tag in the first flashcard 
   * Pros: Will be less complicated.
   * Cons: There may be too many commands which can be combined to one.
 
-#### Proposed Implementation
+
+### \[Proposed\] Add Flashcard with open-ended question feature
+
+The proposed Add mechanism is facilitated by `QuickCache` . It is stored internally as a `UniqueFlashcardList` inside the `QuickCache` object.
+
+Given below is an example usage scenario and how the add mechanism behaves at each step.
+
+Step 1. The user launches the application for the first time. The `QuickCache` will be initialized with the initial QuickCache state.
+
+Step 2. The user executes `add q/ question... t/tag` command to add a flashcard with tag. The `add` command will cause the addition of a flashcard with open-ended question inside the QuickCache. 
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not be saved in the QuickCache, so the flashcard inside the QuickCache will not be updated.
+</div>
+
+#### Design consideration:
+
+##### Aspect: How Add executes
+
+* **Alternative 1 (current choice):** Flashcard is saved upon creation inside the QuickCache.
+  * Pros: Easy to implement and CLI-optimized.
+  * Cons: May be complicated as there will be too many fields in the `add` command.
+
+### \[Proposed\] Add Flashcard with Multiple Choice question feature
+
+The proposed Add Multiple Choice Question mechanism is facilitated by `QuickCache` . It is stored internally as a `UniqueFlashcardList` inside the `QuickCache` object.
+
+Given below is an example usage scenario and how the addmcq mechanism behaves at each step.
+
+Step 1. The user launches the application for the first time. The `QuickCache` will be initialized with the initial QuickCache state.
+
+Step 2. The user executes `addmcd q/ question ans/1 c/first choice c/second choice c/third choice... t/tag` command to add a flashcard with tag. The `addmcq` command will cause the addition of a flashcard with multiple choice question inside the QuickCache. 
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not be saved in the QuickCache, so the flashcard inside the QuickCache will not be updated.
+</div>
+
+#### Design consideration:
+
+##### Aspect: How addmcq executes
+
+* **Alternative 1 (current choice):** Flashcard is saved upon creation inside the QuickCache.
+  * Pros: Easy to implement and CLI-optimized.
+  * Cons: May be complicated as there will be too many fields in the `add` command.
+
+### \[Proposed\] Delete Flashcard feature
+
+The proposed Delate mechanism is facilitated by `QuickCache` . It will delete the flashcard at the provided index stored in the `UniqueFlashcardList` inside the `QuickCache` object.
+
+Given below is an example usage scenario and how the delete mechanism behaves at each step.
+
+Step 1. The user launches the application for the first time. The `QuickCache` will be initialized with the initial QuickCache state.
+
+Step 2. The user executes `delete 1` command to delete the first flashcard. The `delete` command will cause the deletion of a flashcard inside the QuickCache. 
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not be saved in the QuickCache, so the flashcard inside the QuickCache will not be updated.
+</div>
+
+#### Design consideration:
+
+##### Aspect: How delete executes
+
+* **Alternative 1 (current choice):** Provide the index of the flashcard to be deleted.
+  * Pros: Easy to implement and CLI-optimized.
+  * Cons: User have to know the index of the specified flashcard.
 
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
+
 
 
 --------------------------------------------------------------------------------------------------------------------
