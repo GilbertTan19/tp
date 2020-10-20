@@ -300,12 +300,31 @@ Step 2. The user executes `delete 1` command to delete the first flashcard. The 
 * **Alternative 1 (current choice):** Provide the index of the flashcard to be deleted.
   * Pros: Easy to implement and CLI-optimized.
   * Cons: User have to know the index of the specified flashcard.
+  
+### \[Proposed\] Edit Flashcard feature
+
+The proposed Delete mechanism is facilitated by `QuickCache` . It will edit the flashcard at the provided index stored in the `UniqueFlashcardList` inside the `QuickCache` object.
+
+Given below is an example usage scenario and how the edit mechanism behaves at each step.
+
+Step 1. The user launches the application for the first time. The `QuickCache` will be initialized with the initial QuickCache state.
+
+Step 2. The user executes `edit 1 ...` command to edit some of the fields given in the command on the first flashcard. The `edit` command will cause the creation of a flashcard with updated field and set it to be the flashcard on the index in `UniqueFlashcardList`. 
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not be saved in the QuickCache, so the flashcard inside the QuickCache will not be updated.
+</div>
+
+#### Design consideration:
+
+##### Aspect: How delete executes
+
+* **Alternative 1 (current choice):** Provide the index of the flashcard to be edited.
+  * Pros: Easy to implement and CLI-optimized.
+  * Cons: User have to know the index of the specified flashcard.
 
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
-
-
 
 --------------------------------------------------------------------------------------------------------------------
 
