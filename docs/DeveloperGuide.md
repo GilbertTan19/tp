@@ -282,7 +282,7 @@ Step 2. The user executes `addmcd q/ question ans/1 c/first choice c/second choi
 
 ### \[Proposed\] Delete Flashcard feature
 
-The proposed Delate mechanism is facilitated by `QuickCache` . It will delete the flashcard at the provided index stored in the `UniqueFlashcardList` inside the `QuickCache` object.
+The proposed Delete mechanism is facilitated by `QuickCache` . It will delete the flashcard at the provided index stored in the `UniqueFlashcardList` inside the `QuickCache` object.
 
 Given below is an example usage scenario and how the delete mechanism behaves at each step.
 
