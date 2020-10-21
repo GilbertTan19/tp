@@ -1,0 +1,134 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":QuickCacheParser" as QuickCacheParser LOGIC_COLOR
+participant ":TestCommandParser" as TestCommandParser LOGIC_COLOR
+participant "t:TestCommand" as TestCommand LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+participant "lastShownList:ObservableList<Flashcard>" as ObservableList MODEL_COLOR
+participant "flashcard:Flashcard" as Flashcard MODEL_COLOR
+participant "updatedFlashcard:Flashcard" as UpdatedFlashcard MODEL_COLOR
+end box
+[-> LogicManager : execute(test 1 ans/Example answer)
+activate LogicManager
+
+LogicManager -> QuickCacheParser : parseCommand(test 1 ans/Example Answer)
+activate QuickCacheParser
+
+create TestCommandParser
+QuickCacheParser -> TestCommandParser
+activate TestCommandParser
+
+TestCommandParser -> QuickCacheParser
+deactivate TestCommandParser
+
+QuickCacheParser -> TestCommandParser : parse(1 ans/Example Answer)
+activate TestCommandParser
+
+create TestCommand
+TestCommandParser -> TestCommand
+activate TestCommand
+
+TestCommand --> TestCommandParser : t
+deactivate TestCommand
+
+TestCommandParser -> QuickCacheParser : t
+deactivate TestCommandParser
+
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+TestCommandParser -[hidden]-> QuickCacheParser
+destroy TestCommandParser
+
+QuickCacheParser --> LogicManager : t
+deactivate QuickCacheParser
+
+LogicManager -> TestCommand : execute()
+activate TestCommand
+
+TestCommand -> Model : getFilteredFlashcardList()
+activate Model
+
+Model -> ObservableList
+activate ObservableList
+
+ObservableList -> Model
+deactivate ObservableList
+
+Model --> TestCommand : lastShownList
+deactivate Model
+
+TestCommand -> ObservableList : get(index)
+activate ObservableList
+
+ObservableList -> Flashcard
+activate Flashcard
+
+Flashcard -> ObservableList
+deactivate Flashcard
+
+ObservableList -> TestCommand : flashcard
+deactivate ObservableList
+
+TestCommand -> Flashcard : checkAnswer(answer)
+activate Flashcard
+
+Flashcard -> TestCommand : isCorrect
+deactivate Flashcard
+
+alt is correct
+
+    TestCommand -> Flashcard : getFlashcardAfterTestSuccess()
+    activate Flashcard
+
+    create UpdatedFlashcard
+    Flashcard -> UpdatedFlashcard : getFlashcardAfterTestSuccess()
+    activate UpdatedFlashcard
+
+    UpdatedFlashcard -> Flashcard
+    deactivate UpdatedFlashcard
+
+    Flashcard -> TestCommand : updatedFlashcard
+    deactivate Flashcard
+
+else is not correct
+
+   TestCommand -> Flashcard : getFlashcardAfterTestFailure()
+   activate Flashcard
+
+   create UpdatedFlashcard
+   Flashcard -> UpdatedFlashcard : getFlashcardAfterTestFailure()
+   activate UpdatedFlashcard
+
+   UpdatedFlashcard -> Flashcard
+   deactivate UpdatedFlashcard
+
+   Flashcard -> TestCommand : updatedFlashcard
+   deactivate Flashcard
+
+end
+
+TestCommand -> Model : setFlashcard(f, updated)
+activate Model
+
+Model -> Flashcard
+activate Flashcard
+
+Flashcard -> Model
+destroy Flashcard
+
+Model -> TestCommand
+deactivate Model
+
+TestCommand --> LogicManager : result
+deactivate TestCommand
+TestCommand -[hidden]-> LogicManager : result
+destroy TestCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

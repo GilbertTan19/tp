@@ -3,6 +3,7 @@ package quickcache.logic.parser;
 import static quickcache.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static quickcache.logic.parser.CliSyntax.PREFIX_ANSWER;
 import static quickcache.logic.parser.CliSyntax.PREFIX_CHOICE;
+import static quickcache.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
 import static quickcache.logic.parser.CliSyntax.PREFIX_QUESTION;
 import static quickcache.logic.parser.CliSyntax.PREFIX_TAG;
 
@@ -12,6 +13,7 @@ import java.util.stream.Stream;
 import quickcache.logic.commands.AddMultipleChoiceQuestionCommand;
 import quickcache.logic.parser.exceptions.ParseException;
 import quickcache.model.flashcard.Choice;
+import quickcache.model.flashcard.Difficulty;
 import quickcache.model.flashcard.Flashcard;
 import quickcache.model.flashcard.Question;
 import quickcache.model.flashcard.Tag;
@@ -37,7 +39,8 @@ public class AddMultipleChoiceQuestionCommandParser implements Parser<AddMultipl
      */
     public AddMultipleChoiceQuestionCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_QUESTION, PREFIX_ANSWER, PREFIX_CHOICE, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_QUESTION, PREFIX_ANSWER, PREFIX_CHOICE,
+                        PREFIX_TAG, PREFIX_DIFFICULTY);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_QUESTION, PREFIX_ANSWER)
                 || !argMultimap.getPreamble().isEmpty()) {
@@ -51,9 +54,14 @@ public class AddMultipleChoiceQuestionCommandParser implements Parser<AddMultipl
         Question question = ParserUtil.parseMultipleChoiceQuestion(
                 questionInString, argMultimap.getValue(PREFIX_ANSWER).get(), choicesList);
 
-        Flashcard flashcard = new Flashcard(question, tagList);
-
-        return new AddMultipleChoiceQuestionCommand(flashcard);
+        if (arePrefixesPresent(argMultimap, PREFIX_DIFFICULTY)) {
+            Difficulty difficulty = ParserUtil.parseDifficulty(argMultimap.getValue(PREFIX_DIFFICULTY).get());
+            Flashcard flashcard = new Flashcard(question, tagList, difficulty);
+            return new AddMultipleChoiceQuestionCommand(flashcard);
+        } else {
+            Flashcard flashcard = new Flashcard(question, tagList);
+            return new AddMultipleChoiceQuestionCommand(flashcard);
+        }
     }
 
 }

@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import quickcache.commons.exceptions.IllegalValueException;
 import quickcache.model.flashcard.Answer;
 import quickcache.model.flashcard.Choice;
+import quickcache.model.flashcard.Difficulty;
 import quickcache.model.flashcard.Flashcard;
 import quickcache.model.flashcard.MultipleChoiceQuestion;
 import quickcache.model.flashcard.OpenEndedQuestion;
@@ -33,6 +34,7 @@ class JsonAdaptedQuickCache {
     private final List<String> choices;
     private final String answer;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    private final String difficulty;
     private final Statistics statistics;
 
     /**
@@ -44,6 +46,7 @@ class JsonAdaptedQuickCache {
                                  @JsonProperty("choices") List<String> choices,
                                  @JsonProperty("answer") String answer,
                                  @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
+                                 @JsonProperty("difficulty") String difficulty,
                                  @JsonProperty("statistics") Statistics statistics) {
         this.type = type;
         this.question = question;
@@ -52,6 +55,7 @@ class JsonAdaptedQuickCache {
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
+        this.difficulty = difficulty;
         this.statistics = statistics;
     }
 
@@ -59,6 +63,7 @@ class JsonAdaptedQuickCache {
      * Converts a given {@code Flashcard} into this class for Jackson use.
      */
     public JsonAdaptedQuickCache(Flashcard source) {
+
         if (source.getQuestion() instanceof MultipleChoiceQuestion) {
             this.type = MultipleChoiceQuestion.TYPE;
         } else if (source.getQuestion() instanceof OpenEndedQuestion) {
@@ -66,15 +71,21 @@ class JsonAdaptedQuickCache {
         } else {
             this.type = "";
         }
+
         this.question = source.getQuestion().getValue();
+
         if (source.getQuestion().getChoices().isPresent()) {
             this.choices = Arrays.stream(source.getQuestion().getChoices().get()).map(Choice::toString)
                     .collect(Collectors.toList());
         } else {
             this.choices = null;
         }
+
         answer = source.getAnswer().getValue();
+
         tagged.addAll(source.getTags().stream().map(JsonAdaptedTag::new).collect(Collectors.toList()));
+
+        this.difficulty = source.getDifficulty().value;
 
         this.statistics = source.getStatistics();
 
@@ -122,8 +133,6 @@ class JsonAdaptedQuickCache {
 
             final Question modelQuestion = new MultipleChoiceQuestion(question, choices, modelAnswer);
 
-
-
             if (statistics == null) {
                 throw new IllegalValueException(
                         String.format(MISSING_FIELD_MESSAGE_FORMAT, Integer.class.getSimpleName()));
@@ -133,7 +142,12 @@ class JsonAdaptedQuickCache {
 
             final Set<Tag> modelTags = new HashSet<>(flashcardTags);
 
-            return new Flashcard(modelQuestion, modelTags, modelStatistics);
+            if (difficulty == null) {
+                return new Flashcard(modelQuestion, modelTags, modelStatistics);
+            } else {
+                final Difficulty modelDifficulty = new Difficulty(difficulty);
+                return new Flashcard(modelQuestion, modelTags, modelDifficulty, modelStatistics);
+            }
 
         } else if (type.equals(OpenEndedQuestion.TYPE)) {
 
@@ -166,7 +180,12 @@ class JsonAdaptedQuickCache {
 
             final Set<Tag> modelTags = new HashSet<>(flashcardTags);
 
-            return new Flashcard(modelQuestion, modelTags, modelStatistics);
+            if (difficulty == null) {
+                return new Flashcard(modelQuestion, modelTags, modelStatistics);
+            } else {
+                final Difficulty modelDifficulty = new Difficulty(difficulty);
+                return new Flashcard(modelQuestion, modelTags, modelDifficulty, modelStatistics);
+            }
 
         } else {
             throw new IllegalValueException(String.format(INVALID_TYPE));

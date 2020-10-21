@@ -18,6 +18,7 @@ import quickcache.logic.commands.AddMultipleChoiceQuestionCommand;
 import quickcache.logic.parser.exceptions.ParseException;
 import quickcache.model.flashcard.Answer;
 import quickcache.model.flashcard.Choice;
+import quickcache.model.flashcard.Difficulty;
 import quickcache.model.flashcard.MultipleChoiceQuestion;
 import quickcache.model.flashcard.OpenEndedQuestion;
 import quickcache.model.flashcard.Option;
@@ -154,6 +155,21 @@ public class ParserUtil {
             throw new ParseException(Tag.MESSAGE_CONSTRAINTS);
         }
         return new Tag(trimmedTag);
+    }
+
+    /**
+     * Parses a {@code String difficulty} into a {@code Difficulty}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code difficulty} is invalid.
+     */
+    public static Difficulty parseDifficulty(String difficulty) throws ParseException {
+        requireNonNull(difficulty);
+        String trimmedDifficulty = difficulty.trim();
+        if (!Difficulty.isValidDifficultyName(trimmedDifficulty)) {
+            throw new ParseException(Difficulty.MESSAGE_CONSTRAINTS);
+        }
+        return new Difficulty(trimmedDifficulty);
     }
 
     /**

@@ -26,6 +26,7 @@ import quickcache.logic.commands.ExitCommand;
 import quickcache.logic.commands.ExportCommand;
 import quickcache.logic.commands.FindCommand;
 import quickcache.logic.commands.HelpCommand;
+import quickcache.logic.commands.ImportCommand;
 import quickcache.logic.commands.ListCommand;
 import quickcache.logic.commands.OpenCommand;
 import quickcache.logic.commands.StatsCommand;
@@ -132,6 +133,11 @@ public class QuickCacheParserTest {
     @Test
     public void parseCommand_export() throws Exception {
         assertTrue(parser.parseCommand(ExportCommand.COMMAND_WORD + " test.json") instanceof ExportCommand);
+    }
+
+    @Test
+    public void parseCommand_import() throws Exception {
+        assertTrue(parser.parseCommand(ImportCommand.COMMAND_WORD + " test.json") instanceof ImportCommand);
     }
 
     @Test

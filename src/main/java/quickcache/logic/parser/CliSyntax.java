@@ -11,5 +11,6 @@ public class CliSyntax {
     public static final Prefix PREFIX_ANSWER = new Prefix("ans/");
     public static final Prefix PREFIX_CHOICE = new Prefix("c/");
     public static final Prefix PREFIX_OPTION = new Prefix("o/");
+    public static final Prefix PREFIX_DIFFICULTY = new Prefix("d/");
 
 }

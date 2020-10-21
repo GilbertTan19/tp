@@ -2,6 +2,7 @@ package quickcache.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static quickcache.logic.parser.CliSyntax.PREFIX_ANSWER;
+import static quickcache.logic.parser.CliSyntax.PREFIX_DIFFICULTY;
 import static quickcache.logic.parser.CliSyntax.PREFIX_QUESTION;
 import static quickcache.logic.parser.CliSyntax.PREFIX_TAG;
 
@@ -21,7 +22,8 @@ public class AddOpenEndedQuestionCommand extends Command {
             + "Parameters: "
             + PREFIX_QUESTION + "Question "
             + PREFIX_ANSWER + "Answer "
-            + "[" + PREFIX_TAG + "TAG]...\n";
+            + "[" + PREFIX_TAG + "TAG]..."
+            + "[" + PREFIX_DIFFICULTY + "DIFFICULTY]\n";
 
     public static final String MESSAGE_SUCCESS = "New flashcard added: %1$s";
     public static final String MESSAGE_DUPLICATE_FLASHCARD = "This flashcard already exists in QuickCache";

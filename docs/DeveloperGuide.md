@@ -339,6 +339,52 @@ Step 2. The user executes `edit 1 ...` command to edit some of the fields given 
 
 _{Explain here how the data archiving feature will be implemented}_
 
+### Test feature
+
+#### Proposed Implementation
+
+The proposed test mechanism is facilitated by `Flashcard`. Specifically, `Statistics` stored within the flashcard. `Flashcard` implements the following methods.
+* `Flashcard#getFlashcardAfterTestSuccess()` — Returns a new `Flashcard` object with `Statistics:timesTested` and `Statistics:timesTestedCorrect` incremented by one. 
+* `Flashcard#getFlashcardAfterTestFailure()` — Returns a new `Flashcard` object with `Statistics:timesTested` incremented by one.
+
+Given below is an example usage scenario and how the test mechanism behaves at each step.
+
+Step 1. The user launches the application. The `Flashcard` to be tested will be initialized with the initial flashcard state.
+
+![TestState0](images/TestState0.png)
+
+Step 2. The user tests the flashcard with a specified `answer` or `option`.
+
+Step 2a. The user executes `test 1 ans/correct answer` command to test the `Flashcard`. The `test` command calls `Flashcard#getFlashcardAfterTestSuccess()`, and replaces the previously tested flashcard with the newly updated flashcard, changing its state.
+
+![TestState1](images/TestState1.png)
+
+Step 2b. The user executes `test 1 ans/wrong answer` command to test the `Flashcard`. The `test` command calls `Flashcard#getFlashcardAfterTestFailure()`, and replaces the previously tested flashcard with the newly updated flashcard, changing its state.
+
+![TestState2](images/TestState2.png)
+
+The following sequence diagram shows how the test operation works:
+
+![TestSequenceDiagram](images/TestSequenceDiagram.png)
+
+The following activity diagram summarizes what happens when a user executes a test command on a specified flashcard:
+
+![TestActivityDiagram](images/TestActivityDiagram.png)
+
+#### Design consideration:
+
+##### Aspect: How tests manipulate statistics
+
+* **Alternative 1 (current choice):** Increments a counter of `timesTestedCorrect` and `timesTested` in `Statistics`.
+  * Pros: Easy to implement.
+  * Cons: Unable to keep track of useful information such as performance over time. 
+
+* **Alternative 2:** `Statistics` is made up of an `Array` of `test`, including information such as `timestamp`
+  * Pros: Retrieval of useful statistics will be possible.
+  * Cons: Save file will expand very quickly because each `test` record needs to be logged.
+
+_{more aspects and alternatives to be added}_
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**

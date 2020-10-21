@@ -1,0 +1,21 @@
+@startuml
+start
+:User executes test command;
+:Model returns the previously filtered list;
+:Search for flashcard matching the index given;
+
+'Since the beta syntax does not support placing the condition outside the
+'diamond we place it as the true branch instead.
+
+if () then ([given answer is correct])
+    :Get updated flashcard reflecting
+    that a correct answer was given;
+
+else ([else])
+    :Get updated flashcard reflecting
+    that an incorrect answer was given;
+endif
+    :Replace old flashcard
+    with updated flashcard;
+stop
+@enduml

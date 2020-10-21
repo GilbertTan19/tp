@@ -15,6 +15,7 @@ import quickcache.logic.commands.ExitCommand;
 import quickcache.logic.commands.ExportCommand;
 import quickcache.logic.commands.FindCommand;
 import quickcache.logic.commands.HelpCommand;
+import quickcache.logic.commands.ImportCommand;
 import quickcache.logic.commands.ListCommand;
 import quickcache.logic.commands.OpenCommand;
 import quickcache.logic.commands.StatsCommand;
@@ -84,9 +85,11 @@ public class QuickCacheParser {
         case StatsCommand.COMMAND_WORD:
             return new StatsCommandParser().parse(arguments);
 
-
         case ExportCommand.COMMAND_WORD:
             return new ExportCommandParser().parse(arguments);
+
+        case ImportCommand.COMMAND_WORD:
+            return new ImportCommandParser().parse(arguments);
 
         case ClearStatsCommand.COMMAND_WORD:
             return new ClearStatsCommandParser().parse(arguments);

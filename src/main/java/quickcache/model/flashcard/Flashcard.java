@@ -10,6 +10,7 @@ public class Flashcard {
 
     private final Question question;
     private final Set<Tag> tags;
+    private final Difficulty difficulty;
     private final Statistics statistics;
 
     /**
@@ -21,6 +22,7 @@ public class Flashcard {
     public Flashcard(Question question, Set<Tag> tags) {
         this.question = question;
         this.tags = tags;
+        this.difficulty = new Difficulty();
         this.statistics = new Statistics();
     }
 
@@ -34,6 +36,36 @@ public class Flashcard {
     public Flashcard(Question question, Set<Tag> tags, Statistics statistics) {
         this.question = question;
         this.tags = tags;
+        this.difficulty = new Difficulty();
+        this.statistics = statistics;
+    }
+
+    /**
+     * A constructor to create flashcard object.
+     *
+     * @param question Question of the flashcard.
+     * @param tags Tags of the flashcard.
+     * @param difficulty Difficulty of the flashcard.
+     */
+    public Flashcard(Question question, Set<Tag> tags, Difficulty difficulty) {
+        this.question = question;
+        this.tags = tags;
+        this.difficulty = difficulty;
+        this.statistics = new Statistics();
+    }
+
+    /**
+     * A constructor to create flashcard object.
+     *
+     * @param question Question of the flashcard.
+     * @param tags Tags of the flashcard.
+     * @param difficulty Difficulty of the flashcard.
+     * @param statistics Statistics of the flashcard.
+     */
+    public Flashcard(Question question, Set<Tag> tags, Difficulty difficulty, Statistics statistics) {
+        this.question = question;
+        this.tags = tags;
+        this.difficulty = difficulty;
         this.statistics = statistics;
     }
 
@@ -45,8 +77,6 @@ public class Flashcard {
     public Question getQuestion() {
         return question;
     }
-
-
 
     /**
      * Checks the given userAnswer with the correct answer.
@@ -75,6 +105,15 @@ public class Flashcard {
         return this.question.getAnswerOrIndex();
     }
 
+    /**
+     * Gets difficulty of this flashcard.
+     *
+     * @return difficulty.
+     */
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
     @Override
     public String toString() {
         return String.format("Question:\n%s\nAnswer:\n%s", question.getFormatQuestion(),
@@ -92,7 +131,8 @@ public class Flashcard {
 
         return otherFlashcard != null
                 && otherFlashcard.getQuestion().equals(getQuestion())
-                && otherFlashcard.getTags().equals(getTags());
+                && otherFlashcard.getTags().equals(getTags())
+                && otherFlashcard.getDifficulty().equals(getDifficulty());
     }
 
     /**
@@ -116,6 +156,7 @@ public class Flashcard {
             Flashcard other = (Flashcard) otherFlashcard;
             return other.getQuestion().equals(getQuestion())
                     && other.getTags().equals(getTags())
+                    && other.getDifficulty().equals(getDifficulty())
                     && other.getStatistics().equals(getStatistics());
         }
         return false;
@@ -126,16 +167,16 @@ public class Flashcard {
     }
 
     public Flashcard getFlashcardAfterClearStatistics() {
-        return new Flashcard(question, tags, new Statistics());
+        return new Flashcard(question, tags, difficulty, new Statistics());
     }
 
     public Flashcard getFlashcardAfterTestSuccess() {
         Statistics newStats = statistics.incrementTimesTested().incrementTimesTestedCorrect();
-        return new Flashcard(question, tags, newStats);
+        return new Flashcard(question, tags, difficulty, newStats);
     }
 
     public Flashcard getFlashcardAfterTestFailure() {
         Statistics newStats = statistics.incrementTimesTested();
-        return new Flashcard(question, tags, newStats);
+        return new Flashcard(question, tags, difficulty, newStats);
     }
 }

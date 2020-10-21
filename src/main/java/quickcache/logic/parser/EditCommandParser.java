@@ -29,7 +29,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, CliSyntax.PREFIX_ANSWER, CliSyntax.PREFIX_QUESTION,
-                        CliSyntax.PREFIX_CHOICE, CliSyntax.PREFIX_TAG);
+                        CliSyntax.PREFIX_CHOICE, CliSyntax.PREFIX_TAG, CliSyntax.PREFIX_DIFFICULTY);
 
         Index index;
 
@@ -49,6 +49,10 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (argMultimap.getValue(CliSyntax.PREFIX_ANSWER).isPresent()) {
             editFlashcardDescriptor.setAnswer(
                     ParserUtil.parseAnswer(argMultimap.getValue(CliSyntax.PREFIX_ANSWER).get()));
+        }
+        if (argMultimap.getValue(CliSyntax.PREFIX_DIFFICULTY).isPresent()) {
+            editFlashcardDescriptor.setDifficulty(
+                    ParserUtil.parseDifficulty(argMultimap.getValue(CliSyntax.PREFIX_DIFFICULTY).get()));
         }
 
         parseTagsForEdit(argMultimap.getAllValues(CliSyntax.PREFIX_TAG)).ifPresent(editFlashcardDescriptor::setTags);

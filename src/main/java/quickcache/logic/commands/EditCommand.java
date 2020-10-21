@@ -21,6 +21,7 @@ import quickcache.logic.commands.exceptions.CommandException;
 import quickcache.model.Model;
 import quickcache.model.flashcard.Answer;
 import quickcache.model.flashcard.Choice;
+import quickcache.model.flashcard.Difficulty;
 import quickcache.model.flashcard.Flashcard;
 import quickcache.model.flashcard.MultipleChoiceQuestion;
 import quickcache.model.flashcard.OpenEndedQuestion;
@@ -87,6 +88,8 @@ public class EditCommand extends Command {
         String updatedQuestion = editFlashcardDescriptor.getQuestion()
                 .orElse(flashcardToEdit.getQuestion().getValue());
         Set<Tag> updatedTags = editFlashcardDescriptor.getTags().orElse(flashcardToEdit.getTags());
+        Difficulty difficulty = editFlashcardDescriptor.getDifficulty()
+                .orElse(flashcardToEdit.getDifficulty());
         Choice[] updatedChoices;
         Question finalQuestion;
         if (isMcq) {
@@ -107,7 +110,7 @@ public class EditCommand extends Command {
         } else {
             finalQuestion = new OpenEndedQuestion(updatedQuestion, updatedAnswer);
         }
-        return new Flashcard(finalQuestion, updatedTags, statistics);
+        return new Flashcard(finalQuestion, updatedTags, difficulty, statistics);
     }
 
     @Override
@@ -159,6 +162,7 @@ public class EditCommand extends Command {
         private String question;
         private Choice[] choices;
         private Set<Tag> tags;
+        private Difficulty difficulty;
 
 
 
@@ -174,13 +178,14 @@ public class EditCommand extends Command {
             setQuestion(toCopy.question);
             setChoices(toCopy.choices);
             setTags(toCopy.tags);
+            setDifficulty(toCopy.difficulty);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(answer, question, choices, tags);
+            return CollectionUtil.isAnyNonNull(answer, question, choices, tags, difficulty);
         }
 
         public Optional<Answer> getAnswer() {
@@ -197,6 +202,14 @@ public class EditCommand extends Command {
 
         public void setQuestion(String question) {
             this.question = question;
+        }
+
+        public Optional<Difficulty> getDifficulty() {
+            return Optional.ofNullable(difficulty);
+        }
+
+        public void setDifficulty(Difficulty difficulty) {
+            this.difficulty = difficulty;
         }
 
 
@@ -250,7 +263,8 @@ public class EditCommand extends Command {
             return getAnswer().equals(e.getAnswer())
                     && getQuestion().equals(e.getQuestion())
                     && getChoices().equals(e.getChoices())
-                    && getTags().equals(e.getTags());
+                    && getTags().equals(e.getTags())
+                    && getDifficulty().equals(e.getDifficulty());
         }
     }
 }
