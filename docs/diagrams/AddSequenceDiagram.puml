@@ -4,15 +4,15 @@
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":QuickCacheParser" as QuickCacheParser LOGIC_COLOR
-participant ":AddCommandParser" as AddCommandParser LOGIC_COLOR
-participant "t:AddCommand" as AddCommand LOGIC_COLOR
+participant ":AddOpenEndedQuestionCommandParser" as AddOpenEndedQuestionCommandParser LOGIC_COLOR
+participant "t:AddOpenEndedQuestionCommand" as AddOpenEndedQuestionCommand LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
-participant "lastShownList:ObservableList<Flashcard>" as ObservableList MODEL_COLOR
-participant "flashcard:Flashcard" as Flashcard MODEL_COLOR
-participant "updatedFlashcard:Flashcard" as UpdatedFlashcard MODEL_COLOR
+participant "QuickCache" as QuickCache MODEL_COLOR
+participant "flashcards:UniqueFlashcardList" as Flashcards MODEL_COLOR
+participant "internalList:ObservableList<Flashcard>" as ObservableList MODEL_COLOR
 end box
 [-> LogicManager : execute(test 1 ans/Example answer)
 activate LogicManager
@@ -20,114 +20,56 @@ activate LogicManager
 LogicManager -> QuickCacheParser : parseCommand(add q/question ans/ Answer)
 activate QuickCacheParser
 
-create AddCommandParser
-QuickCacheParser -> AddCommandParser
-activate AddCommandParser
+create AddOpenEndedQuestionCommandParser
+QuickCacheParser -> AddOpenEndedQuestionCommandParser
+activate AddOpenEndedQuestionCommandParser
 
-AddCommandParser -> QuickCacheParser
-deactivate AddCommandParser
+AddOpenEndedQuestionCommandParser -> QuickCacheParser
+deactivate AddOpenEndedQuestionCommandParser
 
-QuickCacheParser -> AddCommandParser : parse(q/question ans/Example Answer)
-activate AddCommandParser
+QuickCacheParser -> AddOpenEndedQuestionCommandParser : parse(q/question ans/Example Answer)
+activate AddOpenEndedQuestionCommandParser
 
-create AddCommand
-AddCommandParser -> AddCommand
-activate AddCommand
+create AddOpenEndedQuestionCommand
+AddOpenEndedQuestionCommandParser -> AddOpenEndedQuestionCommand
+activate AddOpenEndedQuestionCommand
 
-AddCommand --> AddCommandParser : t
-deactivate AddCommand
+AddOpenEndedQuestionCommand --> AddOpenEndedQuestionCommandParser : t
+deactivate AddOpenEndedQuestionCommand
 
-AddCommandParser -> QuickCacheParser : t
-deactivate AddCommandParser
+AddOpenEndedQuestionCommandParser -> QuickCacheParser : t
+deactivate AddOpenEndedQuestionCommandParser
 
 'Hidden arrow to position the destroy marker below the end of the activation bar.
-AddCommandParser -[hidden]-> QuickCacheParser
-destroy AddCommandParser
+AddOpenEndedQuestionCommandParser -[hidden]-> QuickCacheParser
+destroy AddOpenEndedQuestionCommandParser
 
 QuickCacheParser --> LogicManager : t
 deactivate QuickCacheParser
 
-LogicManager -> AddCommand : execute()
-activate AddCommand
+LogicManager -> AddOpenEndedQuestionCommand : execute()
+activate AddOpenEndedQuestionCommand
 
-TestCommand -> Model : getFilteredFlashcardList()
+AddOpenEndedQuestionCommand -> Model : addFlashcard()
 activate Model
 
-Model -> ObservableList
+Model -> QuickCache :addFlashcard()
+activate QuickCache
+
+QuickCache -> Flashcards :addFlashcard()
+activate Flashcards
+
+Flashcards -> ObservableList : add()
 activate ObservableList
+return
 
-ObservableList -> Model
-deactivate ObservableList
+return
 
-Model --> TestCommand : lastShownList
-deactivate Model
+return
 
-TestCommand -> ObservableList : get(index)
-activate ObservableList
+return
 
-ObservableList -> Flashcard
-activate Flashcard
-
-Flashcard -> ObservableList
-deactivate Flashcard
-
-ObservableList -> TestCommand : flashcard
-deactivate ObservableList
-
-TestCommand -> Flashcard : checkAnswer(answer)
-activate Flashcard
-
-Flashcard -> TestCommand : isCorrect
-deactivate Flashcard
-
-alt is correct
-
-    TestCommand -> Flashcard : getFlashcardAfterTestSuccess()
-    activate Flashcard
-
-    create UpdatedFlashcard
-    Flashcard -> UpdatedFlashcard : getFlashcardAfterTestSuccess()
-    activate UpdatedFlashcard
-
-    UpdatedFlashcard -> Flashcard
-    deactivate UpdatedFlashcard
-
-    Flashcard -> TestCommand : updatedFlashcard
-    deactivate Flashcard
-
-else is not correct
-
-   TestCommand -> Flashcard : getFlashcardAfterTestFailure()
-   activate Flashcard
-
-   create UpdatedFlashcard
-   Flashcard -> UpdatedFlashcard : getFlashcardAfterTestFailure()
-   activate UpdatedFlashcard
-
-   UpdatedFlashcard -> Flashcard
-   deactivate UpdatedFlashcard
-
-   Flashcard -> TestCommand : updatedFlashcard
-   deactivate Flashcard
-
-end
-
-TestCommand -> Model : setFlashcard(f, updated)
-activate Model
-
-Model -> Flashcard
-activate Flashcard
-
-Flashcard -> Model
-destroy Flashcard
-
-Model -> TestCommand
-deactivate Model
-
-TestCommand --> LogicManager : result
-deactivate TestCommand
-TestCommand -[hidden]-> LogicManager : result
-destroy TestCommand
+return
 
 [<--LogicManager
 deactivate LogicManager
