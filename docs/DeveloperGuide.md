@@ -302,6 +302,10 @@ Step 2. The user executes `delete 1` command to delete the first flashcard. The 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not be saved in the QuickCache, so the flashcard inside the QuickCache will not be updated.
 </div>
 
+The following sequence diagram shows how the delete operation works:
+
+![DeleteSequenceDiagram](images/DeleteSequenceDiagram.png)
+
 #### Design consideration:
 
 ##### Aspect: How delete executes
