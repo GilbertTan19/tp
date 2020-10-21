@@ -251,6 +251,11 @@ Step 2. The user executes `add q/ question... t/tag` command to add a flashcard 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not be saved in the QuickCache, so the flashcard inside the QuickCache will not be updated.
 </div>
 
+
+The following sequence diagram shows how the Add operation works:
+
+![AddOpenEndedSequenceDiagram](images/AddOpenEndedSequenceDiagram.png)
+
 #### Design consideration:
 
 ##### Aspect: How Add executes
