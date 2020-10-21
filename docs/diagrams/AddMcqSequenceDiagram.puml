@@ -1,0 +1,76 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":QuickCacheParser" as QuickCacheParser LOGIC_COLOR
+participant ":AddMultipleChoiceQuestionCommandParser" as AddMultipleChoiceQuestionCommandParser LOGIC_COLOR
+participant "t:AddMultipleChoiceQuestionCommand" as AddMultipleChoiceQuestionCommand LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+participant "QuickCache" as QuickCache MODEL_COLOR
+participant "flashcards:UniqueFlashcardList" as Flashcards MODEL_COLOR
+participant "internalList:ObservableList<Flashcard>" as ObservableList MODEL_COLOR
+end box
+[-> LogicManager : execute(add q/question ans/1 c/first c/second)
+activate LogicManager
+
+LogicManager -> QuickCacheParser : parseCommand(add q/question ans/1 c/first c/second)
+activate QuickCacheParser
+
+create AddMultipleChoiceQuestionCommandParser
+QuickCacheParser -> AddMultipleChoiceQuestionCommandParser
+activate AddMultipleChoiceQuestionCommandParser
+
+AddMultipleChoiceQuestionCommandParser -> QuickCacheParser
+deactivate AddMultipleChoiceQuestionCommandParser
+
+QuickCacheParser -> AddMultipleChoiceQuestionCommandParser : parse(add q/question ans/1 c/first c/second)
+activate AddMultipleChoiceQuestionCommandParser
+
+create AddMultipleChoiceQuestionCommand
+AddMultipleChoiceQuestionCommandParser -> AddMultipleChoiceQuestionCommand
+activate AddMultipleChoiceQuestionCommand
+
+AddMultipleChoiceQuestionCommand --> AddMultipleChoiceQuestionCommandParser : t
+deactivate AddMultipleChoiceQuestionCommand
+
+AddMultipleChoiceQuestionCommandParser -> QuickCacheParser : t
+deactivate AddMultipleChoiceQuestionCommandParser
+
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+AddMultipleChoiceQuestionCommandParser -[hidden]-> QuickCacheParser
+destroy AddMultipleChoiceQuestionCommandParser
+
+QuickCacheParser --> LogicManager : t
+deactivate QuickCacheParser
+
+LogicManager -> AddMultipleChoiceQuestionCommand : execute()
+activate AddMultipleChoiceQuestionCommand
+
+AddMultipleChoiceQuestionCommand -> Model : addFlashcard()
+activate Model
+
+Model -> QuickCache :addFlashcard()
+activate QuickCache
+
+QuickCache -> Flashcards :addFlashcard()
+activate Flashcards
+
+Flashcards -> ObservableList : add()
+activate ObservableList
+return
+
+return
+
+return
+
+return
+
+return
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
