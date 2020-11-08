@@ -467,8 +467,6 @@ Given below is an example usage scenario and how the `FindCommand` mechanism beh
 
 ![FindParserSequenceDiagram](images/FindParserSequenceDiagram.png)
 
-<div style="page-break-after: always;"></div>
-
  The following sequence diagram shows how the find operation works:
 
 ![FindSequenceDiagram](images/FindSequenceDiagram.png)
@@ -478,6 +476,8 @@ Given below is an example usage scenario and how the `FindCommand` mechanism beh
 * **Current choice:** Use a `FlashcardPredicate` to filter for the `Flashcard`s.
   * Pros: `FlashcardPredicate` can be extended to be used for other operations.
   * Cons: *nil*
+
+<div style="page-break-after: always;"></div>
 
 ### Difficulty
 
