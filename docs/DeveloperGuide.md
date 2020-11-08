@@ -546,6 +546,8 @@ The following sequence diagram shows how the input get parsed:
 
 ![TestParserSequenceDiagram](images/TestParserSequenceDiagram.png)
 
+<div style="page-break-after: always;"></div>
+
 The following activity diagram summarizes what happens when a user executes a test command on a specified flashcard:
 
 ![TestActivityDiagram](images/TestActivityDiagram.png)
@@ -565,6 +567,8 @@ The following activity diagram summarizes what happens when a user executes a te
 #### Implementation
 
 The display statistics of flashcard feature will allow the user to view a Pie Chart of the statistics of the Flashcard specified by the given index and display it in the GUI.
+
+<div style="page-break-after: always;"></div>
 
 The display statistics of flashcard implementation requires the creation of a `StatsCommandParser` and a `StatsCommand`. The `StatsCommandParser#parse` will take in a single argument for `Index`. After parsing the argument, it will then proceed to create a `StatsCommand` class instance. If no `Index` is given then a `CommandException` will be thrown.
 
@@ -588,6 +592,8 @@ Step 5. `StatsCommand#execute` will get the `Flashcard` at the specified `Index`
 
 Step 6. The GUI will then proceed to get the `Statistics` from `Feedback` and display its data in the form of a Pie Chart to the user.
 
+<div style="page-break-after: always;"></div>
+
 The following sequence diagram shows how the parser operation works:
 
 ![StatsParserSequenceDiagram](images/StatsParserSequenceDiagram.png)
@@ -601,6 +607,8 @@ The following sequence diagram shows how the stats operation works:
 * **Current choice:** Passes the `Statistics` object to the GUI in `Feedback` which is an attribute of `CommandResult`.
   * Pros: Provides more abstraction as all of the data the GUI needs to display are in the `Feedback` object.
   * Cons: There is a violation of Demeter's law as GUI interacts with an attribute of `CommandResult`.
+
+<div style="page-break-after: always;"></div>
 
 * **Alternative:** Do not use the `Feedback` object. Place all the data in the `CommandResult` object directly.
   * Pros: Demeter's law is no longer violated.
