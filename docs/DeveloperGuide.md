@@ -155,6 +155,7 @@ Step 2. The user executes `add q/question...` command to add a flashcard. This w
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, QuickCache will not create the flashcard.
 </div>
 
+<div style="page-break-after: always;"></div>
 The following sequence diagram shows how the Parser operation works:
 
 ![AddOpenEndedSequenceDiagram](images/AddOpenEndedParserSequenceDiagram.png)
@@ -254,6 +255,7 @@ The following sequence diagram shows how the open operation works:
   * Pros: Easy to implement and CLI-optimized.
   * Cons: nil
 
+<div style="page-break-after: always;"></div>
 ### Tags
 
 #### Implementation
