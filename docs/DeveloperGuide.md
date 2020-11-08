@@ -902,6 +902,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
+<div style="page-break-after: always;"></div>
+
 * 1b. The answer is empty.
 
   * 1b1. QuickCache shows an error message.
@@ -1059,6 +1061,7 @@ MSS:
 
     Use case resumes from step 2.
 
+<div style="page-break-after: always;"></div>
 
 **Use case: UC09 - Import flashcard data file**
 
