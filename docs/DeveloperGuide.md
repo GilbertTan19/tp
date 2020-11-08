@@ -1396,6 +1396,8 @@ We faced a number of challenges in developing QuickCache:
 
 In terms of effort compared to AB3, we felt that QuickCache took at least the same amount of effort, or twice that of AB3 to develop. You can refer to the table below to see the additions and extensions we made to the commands that AB3 came with:
 
+<div style="page-break-after: always;"></div>
+
 | Commands | AB3 | QuickCache | Extensions |
 | --- | --- | --- | --- |
 | add | Y | Y | Add supports both Multiple Choice and Open Ended questions |
@@ -1412,6 +1414,8 @@ In terms of effort compared to AB3, we felt that QuickCache took at least the sa
 | export | | Y | |
 
 We also overhauled the entire `Person` model, and created our own `Flashcard` model, which makes use of the `Question` interface to support multiple entity types.
+
+<div style="page-break-after: always;"></div>
 
 The following class diagram shows the structure of `Person`:
 
