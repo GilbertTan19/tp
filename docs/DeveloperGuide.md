@@ -418,6 +418,8 @@ The following sequence diagram shows how the Delete By Tag mechanism works:
 
 ![DeleteByTagSequenceDiagram](images/DeleteByTagSequenceDiagram.png)
 
+The following sequence diagram shows how the parser mechanism works:
+
 ![DeleteByTagParserSequenceDiagram](images/DeleteByTagParserSequenceDiagram.png)
 
 #### Design considerations:
@@ -461,6 +463,8 @@ Given below is an example usage scenario and how the `FindCommand` mechanism beh
  The following sequence diagram shows how the parser operation works:
 
 ![FindParserSequenceDiagram](images/FindParserSequenceDiagram.png)
+
+<div style="page-break-after: always;"></div>
 
  The following sequence diagram shows how the find operation works:
 
