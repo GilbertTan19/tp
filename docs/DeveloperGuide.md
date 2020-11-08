@@ -98,6 +98,7 @@ The `Model`,
 
 * stores a `UserPref` object that represents the user’s preferences.
 * stores the quick cache flashcard data.
+<div style="page-break-after: always;"></div>
 * exposes an unmodifiable `ObservableList<Flashcard>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
@@ -164,6 +165,7 @@ The following sequence diagram shows how the Add Open Ended Question mechanism w
 
 ![AddOpenEndedSequenceDiagram](images/AddOpenEndedSequenceDiagram.png)
 
+<div style="page-break-after: always;"></div>
 The following activity diagram summarizes what happens when a user executes add open ended question  command on a specified flashcard:
 
 ![AddOpenEndedActivityDiagram](images/AddOpenEndedActivityDiagram.png)
