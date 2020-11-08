@@ -782,10 +782,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                       | add a new flashcard            |                                                                           |
 | `* * *`  | user                                       | delete a flashcard             | remove flashcards that I no longer need                                   |
 | `* *`    | user                                       | find a flashcard by name       | locate details of flashcards without having to go through the entire list |
-| `* *`    | user                                       | edit a flashcard               |                                                                           |
 
 <div style="page-break-after: always;"></div>
 
+| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                |
+| -------- | ------------------------------------------ | ------------------------------ | ------------------------------------------------------------------------- |
+| `* *`    | user                                       | edit a flashcard               |                                                                           |
 | `* *`    | user                                       | quiz myself                    | memorize things better                                                    |
 | `* *`    | user                                       | organize my flashcard          |                                                                           |
 | `* *`    | user                                       | categorize my flashcards       | easily find the flashcard associated with the category                    |
