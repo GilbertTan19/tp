@@ -564,11 +564,11 @@ The following activity diagram summarizes what happens when a user executes a te
 
 ### Display Statistics of Flashcard
 
+<div style="page-break-after: always;"></div>
+
 #### Implementation
 
 The display statistics of flashcard feature will allow the user to view a Pie Chart of the statistics of the Flashcard specified by the given index and display it in the GUI.
-
-<div style="page-break-after: always;"></div>
 
 The display statistics of flashcard implementation requires the creation of a `StatsCommandParser` and a `StatsCommand`. The `StatsCommandParser#parse` will take in a single argument for `Index`. After parsing the argument, it will then proceed to create a `StatsCommand` class instance. If no `Index` is given then a `CommandException` will be thrown.
 
@@ -652,6 +652,8 @@ The following sequence diagram shows how the Clearstats operation works:
 
 ![ClearStatsSequenceDiagram](images/ClearStatsSequenceDiagram.png)
 
+<div style="page-break-after: always;"></div>
+
 #### Design Considerations:
 
 * **Current choice:** Replaces the existing `Flashcard` with a new `Flashcard` that has a new `Statistics` with all attributes set at zero.
@@ -675,6 +677,8 @@ Given below is an example usage scenario and how the export mechanism behaves at
 Step 1. The user inputs the `find t/cs2100` command to find all `Flashcard` containing the tag `cs2100`. The `Model` updates its current filtered flashcard list.
 
 Step 2. The user inputs the `export out.json` command. The following sequence diagram shows how the input command gets parsed:
+
+<div style="page-break-after: always;"></div>
 
 ![ExportParserSequenceDiagram](images/ExportParserSequenceDiagram.png)
 
