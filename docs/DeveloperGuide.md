@@ -245,13 +245,13 @@ Step 5. `OpenCommand#execute` will get the `Flashcard` at the specified `Index` 
 
 Step 6. The GUI will then proceed to get the `Question` from `Feedback` and display its choices and question to the user.
 
-<div style="page-break-after: always;"></div>
-
 The following sequence diagram shows how the parser operation works:
 
 ![OpenParserSequenceDiagram](images/OpenParserSequenceDiagram.png)
 
 The following sequence diagram shows how the open operation works:
+
+<div style="page-break-after: always;"></div>
 
 ![OpenSequenceDiagram](images/OpenSequenceDiagram.png)
 
@@ -293,6 +293,8 @@ Step 4. The `Flashcard` will then be constructed containing the `tagList`.
   * Pros: Easy and fast to find flashcards with a specified tag.
   * Cons: Many duplicate copies of flashcards will be created.
 
+<div style="page-break-after: always;"></div>
+
 ### Edit Flashcard
 
 #### Implementation
@@ -321,9 +323,10 @@ In the example, only a new answer is present. All other information will be take
 
 Step 5. `EditCommand#execute` will then replace the old `Flashcard` in the `model` with the new `Flashcard`.
 
-
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not be saved in the QuickCache, so the flashcard inside the QuickCache will not be updated.
 </div>
+
+<div style="page-break-after: always;"></div>
 
 The following sequence diagram shows how the parser operation works:
 
@@ -367,6 +370,8 @@ Step 5. The `model#deleteFlashcard` will then delete the `Flashcard` by finding 
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not be saved in the QuickCache, so the flashcard inside the QuickCache will not be updated.
 </div>
+
+<div style="page-break-after: always;"></div>
 
 The following sequence diagram shows how the Delete By Index mechanism works:
 
