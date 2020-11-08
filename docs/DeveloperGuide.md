@@ -261,7 +261,6 @@ The following sequence diagram shows how the open operation works:
   * Pros: Easy to implement and CLI-optimized.
   * Cons: nil
 
-<div style="page-break-after: always;"></div>
 ### Tags
 
 #### Implementation
