@@ -92,17 +92,17 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
+<div style="page-break-after: always;"></div>
+
 **API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T13-2/tp/blob/master/src/main/java/quickcache/model/Model.java)
 
 The `Model`,
 
 * stores a `UserPref` object that represents the user’s preferences.
 * stores the quick cache flashcard data.
-<div style="page-break-after: always;"></div>
 * exposes an unmodifiable `ObservableList<Flashcard>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
-<div style="page-break-after: always;"></div>
 ### Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
