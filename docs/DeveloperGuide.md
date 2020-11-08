@@ -785,8 +785,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 <div style="page-break-after: always;"></div>
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                |
-| -------- | ------------------------------------------ | ------------------------------ | ------------------------------------------------------------------------- |
 | `* *`    | user                                       | edit a flashcard               |                                                                           |
 | `* *`    | user                                       | quiz myself                    | memorize things better                                                    |
 | `* *`    | user                                       | organize my flashcard          |                                                                           |
