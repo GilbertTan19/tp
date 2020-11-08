@@ -851,12 +851,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 1.
 
+<div style="page-break-after: always;"></div>
 
 **Use case: UC03 - Delete a flashcard**
 
 **Preconditions: User has QuickCache open.**
-
-<div style="page-break-after: always;"></div>
 
 **MSS**
 
