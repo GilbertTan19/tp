@@ -277,6 +277,8 @@ Step 1. The user launches the application for the first time. `QuickCache` will 
 
 Step 2. The user executes `add q/question... t/tag` command to add a flashcard with a tag inside QuickCache.
 
+<div style="page-break-after: always;"></div>
+
 Step 3. During the execution of `AddOpenEndedQuestionCommandParser#parse` method, `ParserUtil#parseTags` will be called
 to parse and create `Tag` objects for each unique tag. This will then be stored in a `Set<Tag>` called `tagList`
 
@@ -291,8 +293,6 @@ Step 4. The `Flashcard` will then be constructed containing the `tagList`.
 * **Alternative:** Utilise an additional data structure for each individual tag to store flashcards.
   * Pros: Easy and fast to find flashcards with a specified tag.
   * Cons: Many duplicate copies of flashcards will be created.
-
-<div style="page-break-after: always;"></div>
 
 ### Edit Flashcard
 
@@ -325,11 +325,11 @@ Step 5. `EditCommand#execute` will then replace the old `Flashcard` in the `mode
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not be saved in the QuickCache, so the flashcard inside the QuickCache will not be updated.
 </div>
 
-<div style="page-break-after: always;"></div>
-
 The following sequence diagram shows how the parser operation works:
 
 ![EditSequenceDiagram](images/EditParserSequenceDiagram.png)
+
+<div style="page-break-after: always;"></div>
 
 The following sequence diagram shows how the edit operation works:
 
