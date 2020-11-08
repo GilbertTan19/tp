@@ -314,6 +314,8 @@ Step 1. The user executes `edit 1 ans/answer` command to edit the answer field o
 Step 2. `EditCommandParser#parse` will then parse the arguments provided. In this example, a new `Answer` object will be
 created after parsing.
 
+<div style="page-break-after: always;"></div>
+
 Step 3. The `Answer` object will then be passed to the `EditFlashcardDescriptor` object. The `EditFlashcardDescriptor`
 object together with the original `Flashcard` will be passed to the `EditCommand` object.
 
@@ -358,6 +360,8 @@ Given below is an example usage scenario and how the Delete By Index mechanism b
 
 Step 1. The user launches the application.
 
+<div style="page-break-after: always;"></div>
+
 Step 2. The user executes `delete 1` command to delete the first flashcard. This command will be parsed by `DeleteCommandParser`.
 
 Step 3. `DeleteCommandParser#parse` will then create a `DeleteCommand` which has its `isDeleteByTag` field set to `false`.
@@ -370,11 +374,11 @@ Step 5. The `model#deleteFlashcard` will then delete the `Flashcard` by finding 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not be saved in the QuickCache, so the flashcard inside the QuickCache will not be updated.
 </div>
 
-<div style="page-break-after: always;"></div>
-
 The following sequence diagram shows how the Delete By Index mechanism works:
 
 ![DeleteSequenceDiagram](images/DeleteSequenceDiagram.png)
+
+<div style="page-break-after: always;"></div>
 
 #### Design considerations:
 
