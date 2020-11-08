@@ -768,6 +768,7 @@ The following activity diagram summarizes what happens when a user executes an `
 **Value proposition**: manage flashcards faster than a typical mouse/GUI driven app with
 a test feature and track the progress later.
 
+<div style="page-break-after: always;"></div>
 
 ### User stories
 
@@ -782,9 +783,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                       | add a new flashcard            |                                                                           |
 | `* * *`  | user                                       | delete a flashcard             | remove flashcards that I no longer need                                   |
 | `* *`    | user                                       | find a flashcard by name       | locate details of flashcards without having to go through the entire list |
-
-<div style="page-break-after: always;"></div>
-
 | `* *`    | user                                       | edit a flashcard               |                                                                           |
 | `* *`    | user                                       | quiz myself                    | memorize things better                                                    |
 | `* *`    | user                                       | organize my flashcard          |                                                                           |
