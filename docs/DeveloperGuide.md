@@ -810,6 +810,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
+<div style="page-break-after: always;"></div>
+
 **Extensions**
 
 * 1a. Error message indicating that QuickCache.jar cannot be opened pops up.
