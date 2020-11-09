@@ -5,23 +5,28 @@ title: Gilbert's Project Portfolio Page
 <link rel="stylesheet" href="PPP.css">
 ## Gilbert Tan - Project Portfolio for QuickCache (tP)
 
-### Table of Contents
+--
+
+## Table of Contents
+
 1. [Introduction](#introduction)
 	1. [About the team](#about-the-team)
 	2. [About the project](#about-the-project)
 2. [Summary of contributions](#summary-of-contributions)
 	1. [Enhancements and new features added](#enhancements-and-new-features-added)
-		1. [Adding flashcard with multiple choice question and open ended question](#add-a-flashcard)
-		2. [Editing a flashcard](#edit-a-flashcard)
-		3. [Deleting flashcard by index](#delete-a-flashcard)
+		1. [Add a flashcard](#add-a-flashcard) 
+		2. [Edit a flashcard](#edit-a-flashcard)
+		3. [Delete a flashcard by index](#delete-a-flashcard)
 	2. [Code contributed](#code-contributed)
 	3. [Other contributions](#other-contributions)
-		1. [Project management](#project-management)
+		1. [Project management](#project-management) 
 		2. [Enhancements to existing features](#enhancements-to-existing-features)
-		3. [Documentation](#documentation)
+		3. [documentation](#documentation)
 			1. [User Guide](#user-guide)
 			2. [Developer Guide](#developer-guide)
 		4. [Community](#community)
+
+--
 
 <a name="introduction"></a>
 ### 1.Introduction
@@ -84,28 +89,28 @@ The following describes the feature and enhancement I have already done in the p
 
 Given below is other contributions that I have made to the project.
 
-  <a name="project-management"></a>
-  * **Project management**:
-    * Managed 30 issues on GitHub
-    * Helped in checking the code quality
+<a name="project-management"></a>
+#### 2.3.1 Project management
+  * Managed 30 issues on GitHub
+  * Helped in checking the code quality
 
-  <a name="enhancements-to-existing-features"></a>
-  * **Enhancements to existing features**:
-    * Wrote additional tests for existing features to increase coverage (Pull requests [\#203](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/203), [\#221](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/221)
-    * Morph the Logic and Model of AddressBook to have a UniqueFlashcardList. (Pull requests [\#37](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/37))
-    * Refactored remnant code from Person to Flashcard. (Pull requests [\#248](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/248))
+<a name="enhancements-to-existing-features"></a>
+#### 2.3.2 Enhancements to existing features
+  * Wrote additional tests for existing features to increase coverage (Pull requests [\#203](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/203), [\#221](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/221)
+  * Morph the Logic and Model of AddressBook to have a UniqueFlashcardList. (Pull requests [\#37](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/37))
+  * Refactored remnant code from Person to Flashcard. (Pull requests [\#248](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/248))
 
 <a name="documentation"></a>
-  * **Documentation**:
+#### 2.3.3 Documentation
 <a name="user-guide"></a>
-    * User Guide:
-      * Added the documentation for the features `delete`, `add`, `edit`, and `addmcq` (Pull requests [\#152](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/152). [\#137](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/137))
-      * Added the preface for the quick start section. (Pull requests [\#141](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/141))
+##### 2.3.3.1 User Guide
+  * Added the documentation for the features `delete`, `add`, `edit`, and `addmcq` (Pull requests [\#137](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/137 ),[\#152](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/152))
+  * Added the preface for the quick start section. (Pull requests [\#141](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/141))
 <a name="developer-guide"></a>
-    * Developer Guide:
-      * Added implementation details of the `delete`, `add`, `edit`, abd `addmcq` feature. (Pull requests [\#128](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/128), [\#229](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/229))
+##### 2.3.3.2 Developer Guide
+  * Added implementation details of the `delete`, `add`, `edit`, abd `addmcq` feature. (Pull requests [\#128](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/128), [\#229](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/229))
 
 <a name="community"></a>
-  * **Community**:
-    * PRs reviewed (with non-trivial review comments): (Pull requests [\#115](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/115), [\#85](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/85), [\#227](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/227))
-    * Reported bugs and suggestions for other teams in the class (examples: [1](https://github.com/GilbertTan19/ped/issues/1), [2](https://github.com/GilbertTan19/ped/issues/2), [3](https://github.com/GilbertTan19/ped/issues/3))
+#### 2.3.4 Community
+  * PRs reviewed (with non-trivial review comments): (Pull requests [\#115](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/115), [\#85](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/85), [\#227](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/227))
+  * Reported bugs and suggestions for other teams in the class (examples: [1](https://github.com/GilbertTan19/ped/issues/1), [2](https://github.com/GilbertTan19/ped/issues/2), [3](https://github.com/GilbertTan19/ped/issues/3))
