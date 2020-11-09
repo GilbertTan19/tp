@@ -84,29 +84,29 @@ The following describes the feature and enhancement I have already done in the p
 
 Given below is other contributions that I have made to the project.
 
-<a name="project-management"></a>
-* **Project management**:
-  * Managed 30 issues on GitHub
-  * Helped in checking the code quality
+  <a name="project-management"></a>
+  * **Project management**:
+    * Managed 30 issues on GitHub
+    * Helped in checking the code quality
 
-<a name="enhancements-to-existing-features"></a>
-* **Enhancements to existing features**:
-  * Wrote additional tests for existing features to increase coverage (Pull requests [\#203](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/203), [\#221](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/221)
-  * Morph the Logic and Model of AddressBook to have a UniqueFlashcardList. (Pull requests [\#37](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/37))
-  * Refactored remnant code from Person to Flashcard. (Pull requests [\#248](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/248))
+  <a name="enhancements-to-existing-features"></a>
+  * **Enhancements to existing features**:
+    * Wrote additional tests for existing features to increase coverage (Pull requests [\#203](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/203), [\#221](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/221)
+    * Morph the Logic and Model of AddressBook to have a UniqueFlashcardList. (Pull requests [\#37](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/37))
+    * Refactored remnant code from Person to Flashcard. (Pull requests [\#248](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/248))
 
 <a name="documentation"></a>
-* **Documentation**:
+  * **Documentation**:
   <a name="user-guide"></a>
-  * User Guide:
-    * Added the documentation for the features `delete`, `add`, `edit`, and `addmcq` (Pull requests [\#152](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/152). [\#137](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/137))
-    * Added the preface for the quick start section. (Pull requests [\#141](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/141))
+    * User Guide:
+      * Added the documentation for the features `delete`, `add`, `edit`, and `addmcq` (Pull requests [\#152](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/152). [\#137](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/137))
+      * Added the preface for the quick start section. (Pull requests [\#141](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/141))
 
   <a name="developer-guide"></a>
-  * Developer Guide:
-    * Added implementation details of the `delete`, `add`, `edit`, abd `addmcq` feature. (Pull requests [\#128](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/128), [\#229](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/229))
+    * Developer Guide:
+      * Added implementation details of the `delete`, `add`, `edit`, abd `addmcq` feature. (Pull requests [\#128](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/128), [\#229](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/229))
 
 <a name="community"></a>
-* **Community**:
-  * PRs reviewed (with non-trivial review comments): (Pull requests [\#115](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/115), [\#85](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/85), [\#227](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/227))
-  * Reported bugs and suggestions for other teams in the class (examples: [1](https://github.com/GilbertTan19/ped/issues/1), [2](https://github.com/GilbertTan19/ped/issues/2), [3](https://github.com/GilbertTan19/ped/issues/3))
+  * **Community**:
+    * PRs reviewed (with non-trivial review comments): (Pull requests [\#115](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/115), [\#85](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/85), [\#227](https://github.com/AY2021S1-CS2103T-T13-2/tp/pull/227))
+    * Reported bugs and suggestions for other teams in the class (examples: [1](https://github.com/GilbertTan19/ped/issues/1), [2](https://github.com/GilbertTan19/ped/issues/2), [3](https://github.com/GilbertTan19/ped/issues/3))
